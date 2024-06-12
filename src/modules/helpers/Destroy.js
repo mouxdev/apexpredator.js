@@ -1,3 +1,7 @@
+// -----------
+// MOUX EDITED
+// -----------
+
 export default class Destroy {
   constructor(ctx) {
     this.ctx = ctx
@@ -32,6 +36,10 @@ export default class Destroy {
     this.ctx.toolbar = null
     this.ctx.localization = null
     this.ctx.w.globals.tooltip = null
+    // MOUX
+    // ---
+    this.ctx.w.globals.reticule = null
+    // ---
     this.clearDomElements({ isUpdating })
   }
 

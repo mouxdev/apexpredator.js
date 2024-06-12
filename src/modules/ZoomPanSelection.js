@@ -1,3 +1,7 @@
+// -----------
+// MOUX EDITED
+// -----------
+
 import Graphics from './Graphics'
 import Utils from './../utils/Utils'
 import Toolbar from './Toolbar'
@@ -665,6 +669,13 @@ export default class ZoomPanSelection extends Toolbar {
   panDragging({ context }) {
     const w = this.w
     let me = context
+
+    // MOUX
+    // ---
+    if (w.config.chart.pan != undefined && !w.config.chart.pan.enabled) {
+      return;
+    }
+    // ---
 
     // check to make sure there is data to compare against
     if (typeof w.globals.lastClientPosition.x !== 'undefined') {

@@ -1,3 +1,7 @@
+// -----------
+// MOUX EDITED
+// -----------
+
 import Utils from '../utils/Utils'
 
 export default class Events {
@@ -81,6 +85,34 @@ export default class Events {
             if (typeof w.config.chart.events.click === 'function') {
               w.config.chart.events.click(e, me, opts)
             }
+
+            // MOUX
+            // ---
+            if (
+              w.config.reticule?.enabled
+              && !w.config.tooltip?.enabled
+              && typeof w.config.chart.events.preciseClick === 'function'
+              && w.config.series[0].data
+            ) {
+              let data = w.config.series[w.config.reticule.series].data
+              let lastHover = w.globals.lastHover
+              let arr = w.globals.seriesXvalues[w.config.reticule.series]
+              let previousIndex = 0;
+              let nextIndex = 0;
+              for (let i = 0; i < arr.length; i++) {
+                if (arr[i] < lastHover.x) { previousIndex = i } else { break }
+              }
+              nextIndex = previousIndex + 1
+              let factor = ((lastHover.x - arr[previousIndex]) / (arr[nextIndex] - arr[previousIndex]))
+              let valX = factor * (data[nextIndex][0] - data[previousIndex][0]) + data[previousIndex][0]
+              let valY = factor * (data[nextIndex][1] - data[previousIndex][1]) + data[previousIndex][1]
+              w.config.chart.events.preciseClick(e, me, opts, {
+                x: valX,
+                y: valY,
+              })
+            }
+            // ---
+
             me.ctx.events.fireEvent('click', [e, me, opts])
           }
         },

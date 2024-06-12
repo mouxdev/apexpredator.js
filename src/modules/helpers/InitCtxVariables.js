@@ -1,3 +1,6 @@
+// -----------
+// MOUX EDITED
+// -----------
 import Events from '../Events'
 import Localization from './Localization'
 import Animations from '../Animations'
@@ -22,6 +25,7 @@ import Tooltip from '../tooltip/Tooltip'
 import Core from '../Core'
 import Data from '../Data'
 import UpdateHelpers from './UpdateHelpers'
+import Reticule from '../Reticule.js' // MOUX
 
 import '../../svgjs/svg.js'
 import 'svg.filter.js'
@@ -99,9 +103,17 @@ export default class InitCtxVariables {
     this.ctx.legend = new Legend(this.ctx)
     this.ctx.toolbar = new Toolbar(this.ctx)
     this.ctx.tooltip = new Tooltip(this.ctx)
+    // MOUX
+    // ---
+    this.ctx.reticule = new Reticule(this.ctx)
+    // ---
     this.ctx.dimensions = new Dimensions(this.ctx)
     this.ctx.updateHelpers = new UpdateHelpers(this.ctx)
     this.ctx.zoomPanSelection = new ZoomPanSelection(this.ctx)
     this.ctx.w.globals.tooltip = new Tooltip(this.ctx)
+    // MOUX
+    // ---
+    this.ctx.w.globals.reticule = new Reticule(this.ctx)
+    // ---
   }
 }

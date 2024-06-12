@@ -1,3 +1,7 @@
+// -----------
+// MOUX EDITED
+// -----------
+
 import Graphics from '../Graphics'
 import Series from '../Series'
 
@@ -93,6 +97,11 @@ export default class Position {
     let w = this.w
     const ttCtx = this.ttCtx
 
+    // MOUX
+    // ---
+    if (!ttCtx.xaxisTooltip) return;
+    // ---
+
     if (ttCtx.xaxisTooltip !== null && ttCtx.xcrosshairsWidth !== 0) {
       ttCtx.xaxisTooltip.classList.add('apexcharts-active')
 
@@ -125,6 +134,11 @@ export default class Position {
   moveYAxisTooltip(index) {
     const w = this.w
     const ttCtx = this.ttCtx
+
+    // MOUX
+    // ---
+    if (!ttCtx.xaxisTooltip) return;
+    // ---
 
     if (ttCtx.yaxisTTEls === null) {
       ttCtx.yaxisTTEls = w.globals.dom.baseEl.querySelectorAll(

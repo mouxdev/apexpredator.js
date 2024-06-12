@@ -1,3 +1,7 @@
+// -----------
+// MOUX EDITED
+// -----------
+
 import Labels from './Labels'
 import Position from './Position'
 import Marker from './Marker'

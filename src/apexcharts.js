@@ -1,3 +1,7 @@
+// -----------
+// MOUX EDITED
+// -----------
+
 import Annotations from './modules/annotations/Annotations'
 import Base from './modules/Base'
 import CoreUtils from './modules/CoreUtils'
@@ -324,7 +328,9 @@ export default class ApexCharts {
         // draw tooltips at the end
         if (w.config.tooltip.enabled && !w.globals.noData) {
           me.w.globals.tooltip.drawTooltip(graphData.xyRatios)
-        }
+        } else if (w.config.reticule?.enabled) { // MOUX
+          me.w.globals.reticule.drawReticule(graphData.xyRatios) // MOUX
+        } // MOUX
 
         if (
           w.globals.axisCharts &&
