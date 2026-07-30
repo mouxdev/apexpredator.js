@@ -94,8 +94,8 @@ export default class Events {
               && typeof w.config.chart.events.preciseClick === 'function'
               && w.config.series[w.config.reticule.series].data
             ) {
-              console.log("----------")
-              console.log("PRECISE CLICK!")
+              //console.log("----------")
+              //console.log("PRECISE CLICK!")
               let data = w.config.series[w.config.reticule.series].data
               let lastHover = w.globals.lastHover
               let arr = w.globals.seriesXvalues[w.config.reticule.series]
@@ -106,18 +106,18 @@ export default class Events {
               }
               nextIndex = previousIndex + 1
               let factor = ((lastHover.x - arr[previousIndex]) / (arr[nextIndex] - arr[previousIndex]))
-              console.log("data", data)
-              console.log("data[nextIndex]", data[nextIndex])
+              //console.log("data", data)
+              //console.log("data[nextIndex]", data[nextIndex])
               let valX = factor * (data[nextIndex][0] - data[previousIndex][0]) + data[previousIndex][0]
               if (isNaN(valX)) {
-                console.log("Original value was NaN, recomputing using different format!")
+                //console.log("Original value was NaN, recomputing using different format!")
                 valX = factor * (data[nextIndex].x - data[previousIndex].x) + data[previousIndex].x
               }
               let valY = factor * (data[nextIndex][1] - data[previousIndex][1]) + data[previousIndex][1]
               if (isNaN(valY)) {
                 valY = factor * (data[nextIndex].y - data[previousIndex].y) + data[previousIndex].y
               }
-              console.log("----------")
+              //console.log("----------")
               w.config.chart.events.preciseClick(e, me, opts, {
                 x: valX,
                 y: valY,
