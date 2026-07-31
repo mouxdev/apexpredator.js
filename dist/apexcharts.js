@@ -1,5 +1,5 @@
 /*!
- * ApexCharts v1.0.45
+ * ApexCharts v1.0.46
  * (c) 2018-2026 ApexCharts
  * Released under the MIT License.
  */
@@ -2632,7 +2632,7 @@
             var gs = [];
             var gi = [];
             typeSeries.i.forEach(function (i, ii) {
-              if (w.config.series[i].group === gn) {
+              if (w.config.series[i] && w.config.series[i].group === gn) {
                 gs.push(typeSeries.series[ii]);
                 gi.push(i);
               }

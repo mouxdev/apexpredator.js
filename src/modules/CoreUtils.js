@@ -615,7 +615,7 @@ class CoreUtils {
         let gs = []
         let gi = []
         typeSeries.i.forEach((i, ii) => {
-          if (w.config.series[i].group === gn) {
+          if (w.config.series[i] && w.config.series[i].group === gn) {
             gs.push(typeSeries.series[ii])
             gi.push(i)
           }
