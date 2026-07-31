@@ -288,21 +288,21 @@ export default class Data {
       }
     } else if (format === 'xy') {
       for (let j = 0; j < ser[i].data.length; j++) {
-        let isDataPoint2D = Array.isArray(ser[i].data[j].y)
+        const isDataPoint2D = Array.isArray(ser[i].data[j].y)
         const id = Utils.randomId()
         const x = ser[i].data[j].x
+
         const y = {
           y1: isDataPoint2D ? ser[i].data[j].y[0] : ser[i].data[j].y,
           y2: isDataPoint2D ? ser[i].data[j].y[1] : ser[i].data[j].y,
           rangeName: id,
         }
 
-        // CAUTION: mutating config object by adding a new property
-        // TODO: As this is specifically for timeline rangebar charts, update the docs mentioning the series only supports xy format
-        ser[i].data[j].rangeName = id
-
         const uI = uniqueKeys.findIndex((t) => t.x === x)
-        uniqueKeys[uI].y.push(y)
+
+        if (uI !== -1) {
+          uniqueKeys[uI].y.push(y)
+        }
 
         rangeStart.push(y.y1)
         rangeEnd.push(y.y2)
@@ -639,8 +639,8 @@ export default class Data {
       labelArr = gl.axisCharts
         ? []
         : gl.series.map((gls, glsi) => {
-            return glsi + 1
-          })
+          return glsi + 1
+        })
       for (let i = 0; i < ser.length; i++) {
         gl.seriesX.push(labelArr)
       }
