@@ -1,5 +1,5 @@
 /*!
- * ApexCharts v1.0.43
+ * ApexCharts v1.0.45
  * (c) 2018-2026 ApexCharts
  * Released under the MIT License.
  */
@@ -8726,14 +8726,12 @@
               y2: isDataPoint2D ? ser[i].data[_j3].y[1] : ser[i].data[_j3].y,
               rangeName: id
             };
-
-            // CAUTION: mutating config object by adding a new property
-            // TODO: As this is specifically for timeline rangebar charts, update the docs mentioning the series only supports xy format
-            ser[i].data[_j3].rangeName = id;
             var uI = uniqueKeys.findIndex(function (t) {
               return t.x === x;
             });
-            uniqueKeys[uI].y.push(y);
+            if (uI !== -1) {
+              uniqueKeys[uI].y.push(y);
+            }
             rangeStart.push(y.y1);
             rangeEnd.push(y.y2);
           };
